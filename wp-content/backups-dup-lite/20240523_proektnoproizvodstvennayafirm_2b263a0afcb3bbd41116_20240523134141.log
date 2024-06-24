@@ -1,0 +1,75 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: 23.05.2024 13:41
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.5.9
+WORDPRESS:	6.5.3
+PHP INFO:	8.2.0 | SAPI: apache2handler
+SERVER:		Apache/2.4.54 (Unix) mod_fastcgi/mod_fastcgi-SNAP-0910052141 PHP/8.2.0 OpenSSL/1.0.2u mod_wsgi/3.5 Python/2.7.18 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 4294967296 (128M default) 
+MEMORY STACK: 83MB
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   PHP(query limit - 100)
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported
+TABLES: total:51 | filtered:0 | create:51
+FILTERED: []
+SQL CREATED: 20240523_proektnoproizvodstvennayafirm_2b263a0afcb3bbd41116_20240523134141_database.sql
+SQL FILE SIZE: 1.54MB (1615003)
+SQL FILE TIME: 2024-05-23 13:41:50
+SQL RUNTIME: 0.49 sec.
+
+********************************************************************************
+ARCHIVE (ZIP):
+********************************************************************************
+ARCHIVE DIR:  /Users/gamletel/Sites/7789
+ARCHIVE FILE: 20240523_proektnoproizvodstvennayafirm_2b263a0afcb3bbd41116_20240523134141_archive.zip
+FILTERS: *OFF*
+DIRS:
+	not set
+FILES:
+	not set
+EXTS:  not set
+----------------------------------------
+COMPRESSING
+SIZE:	176.31MB
+STATS:	Dirs 1,468 | Files 9,989
+SQL ADDED: 20240523_proektnoproizvodstvennayafirm_2b263a0afcb3bbd41116_20240523134141_database.sql
+ZipArchive Object
+(
+    [lastId] => 11456
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 11457
+    [filename] => /Users/gamletel/Sites/7789/wp-content/backups-dup-lite/tmp/20240523_proektnoproizvodstvennayafirm_2b263a0afcb3bbd41116_20240523134141_archive.zip
+    [comment] => 
+)
+
+FILE ADDED TO ZIP: 11456
+COMPRESSION RESULT: '1'
+COMPRESSED SIZE: 76.01MB
+ARCHIVE RUNTIME: 21.58 sec.
+MEMORY STACK: 85MB
+building installer
+ПРОВЕРКА АРХИВА НА ЦЕЛОСТНОСТЬ: ПРОЙДЕНА
+
+********************************************************************************
+INTEGRITY CHECKS:
+********************************************************************************
+SQL FILE: 1.54MB
+INSTALLER FILE: 73.49KB
+ARCHIVE FILE: 77.98MB 
+ОЖИДАЕМОЕ КОЛИЧЕСТВО ФАЙЛОВ/КАТОЛОГ: 11,457
+ФАКТИЧЕСКОЕ КОЛИЧЕСТВО ФАЙЛОВ/КАТАЛОГОВ: 11,456
+ТЕСТ ЛОГИКИ АРХИВА: Пройден
+
+********************************************************************************
+RECORD ID:[2]
+TOTAL PROCESS RUNTIME: 28.80 sec.
+PEAK PHP MEMORY USED: 87MB
+DONE PROCESSING => 20240523_proektnoproizvodstvennayafirm 23.05.2024 13:42
+

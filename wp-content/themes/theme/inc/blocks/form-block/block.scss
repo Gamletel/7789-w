@@ -1,0 +1,171 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#form-block {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg, #f4f4f4 0%, #efefef 100%);
+  border-radius: 10px;
+  z-index: 1;
+  padding: 89.5px 0;
+
+  .block {
+    &__content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-title {
+      max-width: 570px;
+      margin-bottom: adapt(20, 10);
+    }
+
+    &__subtitle {
+      max-width: 470px;
+      margin-bottom: adapt(40, 20);
+
+      color: var(--main-text);
+    }
+
+    &__image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .form {
+    max-width: 706px;
+
+    &__inputs {
+      display: flex;
+      gap: adapt(10, 5);
+
+      .input {
+        flex-grow: 1;
+      }
+
+      .btn {
+        flex-shrink: 0;
+      }
+    }
+
+    .policy {
+      margin-top: adapt(10, 5);
+
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: adapt(14, 12);
+      line-height: 120%;
+      color: var(--light-text);
+
+      a {
+        text-decoration-line: underline;
+        text-decoration-skip-ink: none;
+
+        transition: color .15s;
+
+        &:hover {
+          color: var(--primary-hover);
+        }
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+  #form-block {
+    padding: 20px 0;
+
+    .block {
+      &__image {
+        display: none;
+      }
+
+      &__content {
+        align-items: center;
+
+        text-align: center;
+      }
+    }
+
+    .form{
+      &__inputs{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        .btn{
+          width: 100%;
+          grid-column: 1 / span 2;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 769px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+  #form-block{
+    .form{
+      &__inputs{
+        grid-template-columns: 1fr;
+
+        .btn{
+          grid-column: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+
+}

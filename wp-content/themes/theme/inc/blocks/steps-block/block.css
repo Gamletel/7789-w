@@ -1,0 +1,96 @@
+#steps-block .steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#steps-block .steps .step {
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: clamp(10px, calc(0.625vw + 8px), 20px);
+  border-radius: 10px;
+  background-color: var(--white);
+}
+#steps-block .steps .step.opened .step__toggler svg:nth-child(1) {
+  opacity: 0;
+}
+#steps-block .steps .step.opened .step__toggler svg:nth-child(2) {
+  opacity: 1;
+}
+#steps-block .steps .step__index {
+  width: 70px;
+  flex-shrink: 0;
+  margin-right: clamp(10px, calc(1.25vw + 6px), 30px);
+  color: var(--primary);
+}
+#steps-block .steps .step__content {
+  max-width: 470px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  padding-right: clamp(10px, calc(0.625vw + 8px), 20px);
+}
+#steps-block .steps .step__title {
+  color: var(--main-text);
+}
+#steps-block .steps .step__text {
+  display: none;
+  margin-top: clamp(10px, calc(0.625vw + 8px), 20px);
+  color: var(--light-text);
+}
+#steps-block .steps .step__image {
+  display: none;
+  position: relative;
+  width: 370px;
+  height: auto;
+  margin-right: clamp(15px, calc(3.75vw + 3px), 75px);
+}
+#steps-block .steps .step__image .image {
+  overflow: hidden;
+  aspect-ratio: 37/20;
+  position: sticky;
+  top: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+#steps-block .steps .step__image .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#steps-block .steps .step__toggler {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+#steps-block .steps .step__toggler svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.15s;
+}
+#steps-block .steps .step__toggler svg:nth-child(1) {
+  opacity: 1;
+}
+#steps-block .steps .step__toggler svg:nth-child(2) {
+  opacity: 0;
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 992px) {
+  #steps-block .steps .step__index {
+    width: 25px;
+  }
+  #steps-block .steps .step__content {
+    max-width: unset;
+  }
+  #steps-block .steps .step__image {
+    display: none !important;
+  }
+}
+
+/*# sourceMappingURL=block.css.map */

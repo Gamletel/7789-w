@@ -1,0 +1,10 @@
+#products-block .swiper-slide {
+  height: auto;
+}
+#products-block .swiper-slide .product-card {
+  height: 100%;
+}
+
+/*============ MEDIA ==================*/
+
+/*# sourceMappingURL=block.css.map */

@@ -1,0 +1,21 @@
+#works-block .block-title {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(15px, calc(0.9375vw + 12px), 30px);
+}
+#works-block .block-title h2 {
+  max-width: 570px;
+}
+#works-block .block__subtitle {
+  max-width: 270px;
+  color: var(--light-text);
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 769px) {
+  #works-block .block-title {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*# sourceMappingURL=block.css.map */

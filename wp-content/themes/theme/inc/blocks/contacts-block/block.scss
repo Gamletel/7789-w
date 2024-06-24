@@ -1,0 +1,286 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#contacts-block {
+  .block {
+    &__content {
+      &-with-form {
+        .block {
+          &__top {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: adapt(30, 15);
+          }
+
+          &__contacts {
+            padding: adapt(30, 15);
+            border: 1px solid var(--stroke);
+            border-radius: 10px;
+
+            h3 {
+              margin-bottom: adapt(30, 15);
+            }
+
+            .contacts {
+              display: flex;
+              flex-direction: column;
+              gap: adapt(20, 10);
+
+              .contact {
+                display: flex;
+                gap: adapt(10, 5);
+
+                &__icon {
+                  width: 30px;
+                  height: 30px;
+                  flex-shrink: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  background: var(--accent);
+
+                  img, svg {
+                    width: 12px;
+                    height: 12px;
+                    flex-shrink: 0;
+                    object-fit: contain;
+                  }
+                }
+
+                &__items {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 5px;
+                  margin-top: 5px;
+
+                  .item {
+                    transition: color .15s;
+
+                    &:hover {
+                      color: var(--primary-hover);
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &__form {
+            border-radius: 10px;
+            padding: adapt(30, 15);
+            background: var(--white);
+
+            .form {
+              &__title {
+                margin-bottom: adapt(10, 5);
+              }
+
+              &__subtitle {
+                margin-bottom: adapt(30, 15);
+              }
+
+              &__inputs {
+                display: flex;
+                flex-direction: column;
+                gap: adapt(10, 5);
+                margin-bottom: adapt(20, 10);
+              }
+
+              .input {
+                width: 100%;
+              }
+
+              .policy {
+                margin-bottom: adapt(10, 5);
+
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 120%;
+                color: var(--light-text);
+
+                a {
+                  text-decoration: underline;
+                  text-decoration-skip-ink: none;
+
+                  transition: color .15s;
+
+                  &:hover {
+                    color: var(--primary-hover);
+                  }
+                }
+              }
+
+              .btn {
+                width: 100%;
+                height: 50px;
+              }
+            }
+          }
+
+          &__map {
+            overflow: hidden;
+            aspect-ratio: 117/40;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: adapt(30, 15);
+
+            > * {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+
+      &-without-form{
+        display: flex;
+        justify-content: space-between;
+        gap: adapt(30,15);
+
+        .block{
+          &__contacts {
+            .contacts {
+              display: flex;
+              flex-direction: column;
+              gap: adapt(20, 10);
+
+              .contact {
+                display: flex;
+                gap: adapt(10, 5);
+
+                &__icon {
+                  width: 30px;
+                  height: 30px;
+                  flex-shrink: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 5px;
+                  background: var(--accent);
+
+                  img, svg {
+                    width: 12px;
+                    height: 12px;
+                    flex-shrink: 0;
+                    object-fit: contain;
+                  }
+                }
+
+                &__items {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 5px;
+                  margin-top: 5px;
+
+                  .item {
+                    transition: color .15s;
+
+                    &:hover {
+                      color: var(--primary-hover);
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &__map{
+            overflow: hidden;
+            min-height: 350px;
+            width: 670px;
+            border-radius: 10px;
+            flex-shrink: 0;
+
+            .map-holder{
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+  #contacts-block {
+    .block {
+      &__content {
+        &-without-form {
+          flex-direction: column;
+
+          .block{
+            &__map{
+              aspect-ratio: 16/9;
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  #contacts-block {
+    .block {
+      &__content {
+        &-with-form {
+          .block {
+            &__top {
+              grid-template-columns: 1fr;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+
+}
+
+@media (max-width: 375px) {
+
+}

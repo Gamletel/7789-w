@@ -1,0 +1,135 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#categories-block {
+  .product-category {
+    &:nth-child(8n) {
+      grid-column: auto;
+
+      .product-category {
+        &__bottom {
+          flex-direction: column;
+          align-items: unset;
+
+          .image-wrapper {
+            overflow: hidden;
+            aspect-ratio: 23/15;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      background-color: var(--white);
+
+      .woocommerce-loop-category__title {
+        color: var(--main-text);
+      }
+
+      .link {
+        &:hover {
+          .text {
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+
+        .text {
+          position: relative;
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: adapt(16, 14);
+          line-height: 120%;
+          color: var(--light-text);
+
+          transition: color .15s;
+
+          &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--light-text);
+
+            transition: width .15s;
+          }
+        }
+
+        svg {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+
+          path {
+            fill: var(--light-text);
+
+            transition: fill .15s;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 769px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+
+}
+
+@media (max-width: 375px) {
+
+}

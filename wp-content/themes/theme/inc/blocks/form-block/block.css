@@ -1,0 +1,96 @@
+#form-block {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg, #f4f4f4 0%, #efefef 100%);
+  border-radius: 10px;
+  z-index: 1;
+  padding: 89.5px 0;
+}
+#form-block .block__content {
+  display: flex;
+  flex-direction: column;
+}
+#form-block .block-title {
+  max-width: 570px;
+  margin-bottom: clamp(10px, calc(0.625vw + 8px), 20px);
+}
+#form-block .block__subtitle {
+  max-width: 470px;
+  margin-bottom: clamp(20px, calc(1.25vw + 16px), 40px);
+  color: var(--main-text);
+}
+#form-block .block__image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#form-block .block__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#form-block .form {
+  max-width: 706px;
+}
+#form-block .form__inputs {
+  display: flex;
+  gap: clamp(5px, calc(0.3125vw + 4px), 10px);
+}
+#form-block .form__inputs .input {
+  flex-grow: 1;
+}
+#form-block .form__inputs .btn {
+  flex-shrink: 0;
+}
+#form-block .form .policy {
+  margin-top: clamp(5px, calc(0.3125vw + 4px), 10px);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: clamp(12px, calc(0.125vw + 11.6px), 14px);
+  line-height: 120%;
+  color: var(--light-text);
+}
+#form-block .form .policy a {
+  text-decoration-line: underline;
+  text-decoration-skip-ink: none;
+  transition: color 0.15s;
+}
+#form-block .form .policy a:hover {
+  color: var(--primary-hover);
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1221px) {
+  #form-block {
+    padding: 20px 0;
+  }
+  #form-block .block__image {
+    display: none;
+  }
+  #form-block .block__content {
+    align-items: center;
+    text-align: center;
+  }
+  #form-block .form__inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #form-block .form__inputs .btn {
+    width: 100%;
+    grid-column: 1/span 2;
+  }
+}
+@media (max-width: 498px) {
+  #form-block .form__inputs {
+    grid-template-columns: 1fr;
+  }
+  #form-block .form__inputs .btn {
+    grid-column: auto;
+  }
+}
+
+/*# sourceMappingURL=block.css.map */

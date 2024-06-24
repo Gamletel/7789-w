@@ -1,0 +1,139 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#mainbanner-block {
+  display: flex;
+  gap: 10px;
+  margin-top: adapt(30, 15);
+
+  .banner {
+    &__main {
+      position: relative;
+      border-radius: 10px;
+      background: var(--white);
+      z-index: 1;
+      padding: adapt(60,30) adapt(50, 15) adapt(60, 30) calc((100% - 1170px) / 2);
+    }
+
+    &__icon {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      max-width: 100%;
+      max-height: 100%;
+      width: 325px;
+      height: 333px;
+      z-index: -1;
+
+      img, svg {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      .content-wrapper {
+        padding-left: 15px;
+      }
+    }
+
+    &__title {
+      margin-top: adapt(30, 10);
+
+      color: var(--main-text);
+      font-size: adapt(50, 32);
+    }
+
+    &__subtitle {
+      max-width: 520px;
+      margin-top: adapt(30, 15);
+      margin-bottom: adapt(50,25);
+
+      color: var(--light-text);
+    }
+
+    &__btn{
+      width: 270px;
+      margin-top: auto;
+    }
+
+    &__image {
+      overflow: hidden;
+      width: 605px;
+      flex-shrink: 0;
+      border-radius: 10px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+  #mainbanner-block{
+    flex-direction: column;
+
+    .banner {
+      &__image {
+        aspect-ratio: 16/7;
+        min-height: unset;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 769px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+
+}
+
+@media (max-width: 375px) {
+
+}

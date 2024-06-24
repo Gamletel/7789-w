@@ -1,0 +1,31 @@
+#gallery-block .swiper {
+  padding-left: calc((100% - 1170px) / 2);
+}
+#gallery-block .swiper-slide {
+  width: fit-content;
+}
+#gallery-block .image {
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  width: 470px;
+  height: auto;
+  border-radius: 10px;
+}
+#gallery-block .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1221px) {
+  #gallery-block .swiper {
+    padding: 0;
+    margin: 0 15px;
+  }
+  #gallery-block .image {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=block.css.map */

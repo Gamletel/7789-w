@@ -1,0 +1,60 @@
+#categories-block .product-category:nth-child(8n) {
+  grid-column: auto;
+}
+#categories-block .product-category:nth-child(8n) .product-category__bottom {
+  flex-direction: column;
+  align-items: unset;
+}
+#categories-block .product-category:nth-child(8n) .product-category__bottom .image-wrapper {
+  overflow: hidden;
+  aspect-ratio: 23/15;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+#categories-block .product-category:nth-child(8n) .product-category__bottom .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#categories-block .product-category:last-child {
+  background-color: var(--white);
+}
+#categories-block .product-category:last-child .woocommerce-loop-category__title {
+  color: var(--main-text);
+}
+#categories-block .product-category:last-child .link:hover .text::before {
+  width: 100%;
+}
+#categories-block .product-category:last-child .link .text {
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: clamp(14px, calc(0.125vw + 13.6px), 16px);
+  line-height: 120%;
+  color: var(--light-text);
+  transition: color 0.15s;
+}
+#categories-block .product-category:last-child .link .text::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--light-text);
+  transition: width 0.15s;
+}
+#categories-block .product-category:last-child .link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+#categories-block .product-category:last-child .link svg path {
+  fill: var(--light-text);
+  transition: fill 0.15s;
+}
+
+/*============ MEDIA ==================*/
+
+/*# sourceMappingURL=block.css.map */

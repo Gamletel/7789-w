@@ -1,0 +1,163 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#advantages-big-block {
+  .advantages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: adapt(30, 15);
+
+    .advantage {
+      &-transparent {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: adapt(60, 20);
+        padding: adapt(20, 10);
+        border-radius: 10px;
+        border: 1px solid var(--stroke);
+
+        .advantage {
+          &__head {
+            display: flex;
+            flex-direction: column;
+            gap: adapt(20, 10);
+          }
+
+          &__icon {
+            width: adapt(50, 35);
+            height: adapt(50, 35);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background: var(--primary);
+
+            img, svg {
+              width: 24px;
+              height: 24px;
+              object-fit: contain;
+            }
+          }
+
+          &__title {
+            color: var(--main-text);
+          }
+
+          &__subtitle {
+            color: var(--light-text);
+          }
+        }
+      }
+
+      &-white {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: adapt(60, 20);
+        padding: adapt(20, 10);
+        border-radius: 10px;
+        background-color: var(--white);
+
+        .advantage {
+          &__head {
+            display: flex;
+            flex-direction: column;
+            gap: adapt(20, 10);
+          }
+
+          &__icon {
+            width: adapt(50, 35);
+            height: adapt(50, 35);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background: var(--accent);
+
+            img, svg {
+              width: 24px;
+              height: 24px;
+              object-fit: contain;
+            }
+          }
+
+          &__title {
+            color: var(--accent);
+          }
+
+          &__subtitle {
+            margin-top: auto;
+
+            color: var(--main-text);
+          }
+        }
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+  #advantages-big-block {
+    .advantages {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 769px) {
+  #advantages-big-block {
+    .advantages {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+  #advantages-big-block {
+    .advantages {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+
+}

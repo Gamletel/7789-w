@@ -1,0 +1,175 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+	@if ($f-min) {
+		$k: calc(($f-max - $f-min) / ($start - $end));
+		$b: $f-min - $k * $end;
+		// Реверсирование значений по необходимости
+		@if ($f-max < $f-min) {
+			$temp: $f-max;
+			$f-max: $f-min;
+			$f-min: $temp;
+		}
+		$w: $k * 100;
+		@return unquote(
+										"clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+		);
+	} @else {
+		@return $f-max * 1px;
+	}
+}
+
+#steps-block{
+	.steps{
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.step{
+			cursor: pointer;
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			padding: adapt(20,10);
+			border-radius: 10px;
+			background-color: var(--white);
+
+			&.opened{
+				.step{
+					&__toggler{
+						svg{
+							&:nth-child(1){
+								opacity: 0;
+							}
+							&:nth-child(2){
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
+
+			&__index{
+				width: 70px;
+				flex-shrink: 0;
+				margin-right: adapt(30,10);
+
+				color: var(--primary);
+			}
+
+			&__content{
+				max-width: 470px;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				margin-right: auto;
+				padding-right: adapt(20,10);
+			}
+
+			&__title{
+				color: var(--main-text);
+			}
+
+			&__text{
+				display: none;
+				margin-top: adapt(20,10);
+
+				color: var(--light-text);
+			}
+
+			&__image{
+				display: none;
+				position: relative;
+				width: 370px;
+				height: auto;
+				margin-right: adapt(75,15);
+
+				.image{
+					overflow: hidden;
+					aspect-ratio: 37/20;
+					position: sticky;
+					top: 10px;
+					width: 100%;
+					height: auto;
+					border-radius: 10px;
+
+					img{
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+			}
+
+			&__toggler{
+				position: relative;
+				width: 24px;
+				height: 24px;
+				flex-shrink: 0;
+
+				svg{
+					position: absolute;
+					top: 0;
+					left: 0;
+					transition: opacity .15s;
+
+					&:nth-child(1){
+						opacity: 1;
+					}
+					&:nth-child(2){
+						opacity: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+	#steps-block {
+		.steps {
+			.step{
+				&__index{
+					width: 25px;
+				}
+
+				&__content{
+					max-width: unset;
+				}
+
+				&__image{
+					display: none !important;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 769px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+
+}
+
+@media (max-width: 375px) {
+
+}
